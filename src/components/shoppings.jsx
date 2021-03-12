@@ -1,21 +1,26 @@
 import React, { Component } from "react";
 import Shopping from "./shopping";
+import ShoppingAddForm from "./shoppingAddForm";
 
 class Shoppings extends Component {
-  state = {
-    shoppings: [
-      { name: "Apple", count: 0 },
-      { name: "Banana", count: 0 },
-      { name: "Kiwi", count: 0 },
-    ],
-  };
   render() {
     return (
-      <ul>
-        {this.state.shoppings.map((item) => (
-          <Shopping shoppingData={item} />
-        ))}
-      </ul>
+      <>
+        <ul>
+          {this.props.item.map((item) => (
+            <Shopping
+              key={item.id}
+              shoppingData={item}
+              onIncrement={this.props.onIncrement}
+              onDecrement={this.props.onDecrement}
+              onDelete={this.props.onDelete}
+            />
+          ))}
+        </ul>
+        <button className="shoppings-reset" onClick={this.props.onReset}>
+          Reset
+        </button>
+      </>
     );
   }
 }

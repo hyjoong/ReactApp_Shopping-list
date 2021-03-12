@@ -1,6 +1,4 @@
-# Shopping List
-
-https://hyjoong.github.io/ReactApp_Shopping-list/
+# Shopping List 
 
 ### Skills
 - React JS
