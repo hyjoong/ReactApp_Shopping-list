@@ -9,7 +9,8 @@ class Navbar extends Component {
           Shopping List
         </header>
         <div className="navCount">
-          Quantity of shopping items :
+          종류 수:<span className="navbarCount">{this.props.itemCount}</span> 총
+          개수:
           <span className="navbarCount">{this.props.totalCount}</span>
         </div>
       </nav>

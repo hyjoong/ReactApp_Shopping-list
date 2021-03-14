@@ -37,7 +37,7 @@ class App extends Component {
   handleAdd = (name) => {
     const tmpArr = [
       ...this.state.shoppings,
-      { id: Date.now(), name, count: 0 },
+      { id: Date.now(), name, count: 1 },
     ];
     this.setState({ shoppings: tmpArr });
   };
@@ -47,17 +47,25 @@ class App extends Component {
       item.count = 0;
       return item;
     });
-    this.setState({   shoppings: tmpArr });
+    this.setState({ shoppings: tmpArr });
   };
-
+  handleRefresh = () => {
+    const tmpArr = [];
+    this.setState({ shoppings: tmpArr });
+  };
+  // handleCount = () => {
+  //   const totalCount = this.state.shoppings.reduce((a, b) => a + b.count, 0);
+  //   return totalCount;
+  // };
   render() {
     return (
       <>
         <section className="list">
           <Navbar
-            totalCount={
+            itemCount={
               this.state.shoppings.filter((item) => item.count > 0).length
             }
+            totalCount={this.state.shoppings.reduce((a, b) => a + b.count, 0)}
           />
           <ul className="items">
             <Shoppings
@@ -66,6 +74,7 @@ class App extends Component {
               onDecrement={this.handleDecrement}
               onDelete={this.handleDelete}
               onReset={this.handleReset}
+              onRefresh={this.handleRefresh}
             />
           </ul>
           <ShoppingAddForm onAdd={this.handleAdd} />

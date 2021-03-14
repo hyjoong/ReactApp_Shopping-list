@@ -17,9 +17,20 @@ class Shoppings extends Component {
             />
           ))}
         </ul>
-        <button className="shoppings-reset" onClick={this.props.onReset}>
-          Reset
-        </button>
+        <div className="resetBtns">
+          <button
+            className="shoppings-reset count"
+            onClick={this.props.onReset}
+          >
+            Reset Count
+          </button>
+          <button
+            className="shoppings-reset all"
+            onClick={this.props.onRefresh}
+          >
+            Refresh
+          </button>
+        </div>
       </>
     );
   }
